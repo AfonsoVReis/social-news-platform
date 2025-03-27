@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Social News Platform
 
-## Getting Started
+### Setup
 
-First, run the development server:
+After cloning the project please add the following values to an `.env.local` file on the **root of the project**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+AUTH0_SECRET='aef0f0e52e6e3e9238d5d4cb217ec7daa40ceeaf7f2f878a9a70ab0b92950565'
+AUTH0_BASE_URL='http://localhost:3000'
+AUTH0_ISSUER_BASE_URL='https://dev-aehbj4wemjhvhg40.us.auth0.com'
+AUTH0_CLIENT_ID='YKk9UDUk5b39yWx1I3JvNL8dZ1gKeVIa'
+AUTH0_CLIENT_SECRET='TGFQW5ug95ms96UY7FrdTbC6IOQZKhVZTr7WPwFfc8QRnld2Jh-5-MSD1Wfhnzx-'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`$ npm i`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run locally
 
-## Learn More
+`$ npm run dev`
 
-To learn more about Next.js, take a look at the following resources:
+You should be all set.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### App authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app uses [auth0](https://auth0.com/) to handle authentication. You can login/signup with the default username/password setting or using an SSO provider (such as Google or GitHub).
 
-## Deploy on Vercel
+If you want to login as a **platform admin** please use:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+username: feed-admin@admin.com
+password: 1Password!123
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+With an `admin` user you will be able to **add / remove / edit / draft** an article.
+
+With an `default` role user you will be able to see articles.
+
+## Stack
+
+### NextJS
+
+This project is built using [App Router](https://nextjs.org/docs/app) which replaces the previous `Pages router`. As a result:
+
+- the `src/app` contains all the routing pages.
+- `getServerSideProps` and `getStaticProps` were dropped in favour of `server components` and `server functions`.
+
+### Redux
+
+While it may seem overkill to use `Redux` it seems relevant to showcase the setup.
+
+The project follows the standard setup for `Redux` with minimal configuration.
+
+Considerations:
+
+- each dispatch to the store is intercepted by a `middleware` that saves the store state into `localStorage` persisting the data.
+- the app purposely does not check the user session prior to populating `localStorage`, because it's assumed that the user may log out and login again while still having some data persisted.
+- Please note that because the app is using `localStorage` we are not fully leveraging SSR features.
+
+If you want to reset / reload the mocked data into the initial state you should clear the key `articles` in your browsers `localStorage`.
+
+### UI components and styling
+
+The app uses [Material UI](https://mui.com/material-ui/all-components/) to leverage and speedup the integration.
+
+`CSS modules` is used for styling.
+
+`MUI theme variables` were injected into `global.css` to leverage the use of vars for `CSS modules` customization.
+
+Considerations:
+
+- `CSS modules` usage could be mostly replaced by `Material UI` + `Emotion` `sx` prop, but i think it was important to showcase CSS usage.
+- Most `Material UI` components are being encapsulated to leverage styling with `CSS modules` instead of directly manipulating the `MUI` components.
+- The app uses [clsx](https://www.npmjs.com/package/clsx) to merge `classNames` and apply variants if applicable.
+
+## Code base linting and formatting
+
+The project includes some light linting and formatting to ensure code base integrity.
+
+- `ESlint`
+- `Prettier`
+- `Stylelint`
+- `Commitlint`

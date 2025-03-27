@@ -1,0 +1,13 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 64px;
+  position: relative;
+  width: 100%;
+
+  & .arrowBack {
+    left: 0;
+    position: absolute;
+    top: 8px;
+  }
+}

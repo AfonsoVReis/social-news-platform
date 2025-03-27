@@ -1,0 +1,36 @@
+.header {
+  background-color: var(--primary);
+  display: flex;
+  height: var(--header-height);
+  position: fixed;
+  width: 100%;
+
+  /* stylelint-disable-next-line custom-property-pattern */
+  z-index: calc(var(--mui-zIndex-fab) + 1);
+
+  & .content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: var(--max-width);
+    padding: 8px;
+    width: 100%;
+  }
+
+  & .sessionWrapper {
+    align-items: center;
+    display: flex;
+  }
+
+  & .logo {
+    fill: var(--secondary);
+    transition: transform var(--transition-default);
+    width: 120px;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.underline {
+  animation: underlineExpand 0.8s ease-out forwards;
+  background: linear-gradient(currentcolor, currentcolor) left bottom / 0% 4px
+    no-repeat;
+}
+
+@keyframes underlineExpand {
+  from {
+    background-size: 0% 4px;
+  }
+
+  to {
+    background-size: 100% 4px;
+  }
+}

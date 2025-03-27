@@ -1,0 +1,33 @@
+.tag {
+  border: 1px solid var(--primary);
+  border-radius: 16px;
+  display: flex;
+  padding: 4px 8px;
+  width: fit-content;
+
+  &.secondary {
+    background-color: var(--secondary);
+    border: 2px solid var(--success);
+    color: var(--success);
+
+    &.active {
+      background-color: var(--success);
+      color: #fff;
+    }
+
+    &:hover {
+      background: var(--success);
+      color: #fff;
+    }
+  }
+
+  &.active {
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+
+  &:hover {
+    background: var(--primary);
+    color: var(--secondary);
+  }
+}

@@ -1,0 +1,51 @@
+.content {
+  display: flex;
+  flex: 1;
+  height: fit-content;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  overflow-y: hidden;
+  width: 100%;
+
+  & .articleImage,
+  & .articleInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+  }
+
+  & .articleInfo {
+    display: flex;
+    flex: 0.4;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 48px;
+
+    & .clamp {
+      -webkit-box-orient: vertical;
+      /* stylelint-disable-next-line value-no-vendor-prefix */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      overflow: hidden;
+    }
+  }
+
+  & .articleImage {
+    flex: 0.5;
+    height: 476px;
+
+    & img {
+      border-radius: 8px;
+      height: 100%;
+      object-fit: fill;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+  }
+}

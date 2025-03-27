@@ -1,0 +1,33 @@
+.content {
+  display: flex;
+  flex-direction: column;
+
+  & .articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    justify-content: space-between;
+  }
+
+  & .categories {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  & .pagination {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    margin: 0 auto;
+    margin-top: 48px;
+  }
+
+  & .divider {
+    background-color: var(--primary);
+    border-radius: 50%;
+    height: 4px;
+    width: 4px;
+  }
+}

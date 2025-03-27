@@ -1,0 +1,20 @@
+.content {
+  align-items: center;
+  display: flex;
+
+  & .authenticated {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    padding-right: 16px;
+  }
+
+  & .profileHolder {
+    gap: 8px;
+    transition: transform var(--transition-default);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

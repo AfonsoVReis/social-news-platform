@@ -1,0 +1,7 @@
+.iconButton {
+  transition: transform var(--transition-default);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
