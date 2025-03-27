@@ -35,7 +35,7 @@ password: 1Password!123
 
 With an `admin` user you will be able to **add / remove / edit / draft** an article.
 
-With an `default` role user you will be able to see articles.
+With a `default` role user you will be able to see articles.
 
 ## Stack
 
@@ -56,7 +56,7 @@ Considerations:
 
 - each dispatch to the store is intercepted by a `middleware` that saves the store state into `localStorage` persisting the data.
 - the app purposely does not check the user session prior to populating `localStorage`, because it's assumed that the user may log out and login again while still having some data persisted.
-- Please note that because the app is using `localStorage` we are not fully leveraging SSR features.
+- please note that since the app uses `localStorage`, it does not fully leverage SSR features.
 
 If you want to reset / reload the mocked data into the initial state you should clear the key `articles` in your browsers `localStorage`.
 
@@ -71,7 +71,7 @@ The app uses [Material UI](https://mui.com/material-ui/all-components/) to lever
 Considerations:
 
 - `CSS modules` usage could be mostly replaced by `Material UI` + `Emotion` `sx` prop, but i think it was important to showcase CSS usage.
-- Most `Material UI` components are being encapsulated to leverage styling with `CSS modules` instead of directly manipulating the `MUI` components.
+- Most `Material UI` components are encapsulated to leverage styling with `CSS modules` instead of directly manipulating the `MUI` components.
 - The app uses [clsx](https://www.npmjs.com/package/clsx) to merge `classNames` and apply variants if applicable.
 
 ## Code base linting and formatting
