@@ -82,3 +82,7 @@ The project includes some light linting and formatting to ensure code base integ
 - `Prettier`
 - `Stylelint`
 - `Commitlint`
+
+## Tests
+
+The project includes basic testing for some utility functions using `Jest`.
